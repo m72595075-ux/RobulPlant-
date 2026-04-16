@@ -6,29 +6,36 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+// dossier public
 app.use(express.static("public"));
 
-let usersOnline = 0;
+// page admin
+app.get("/admin", (req, res) => {
+    res.sendFile(__dirname + "/public/admin.html");
+});
+
+// compteur utilisateurs
+let users = 0;
 
 io.on("connection", (socket) => {
-    usersOnline++;
-    io.emit("users", usersOnline);
+    users++;
+    io.emit("users", users);
 
-    console.log("USER CONNECTÉ");
+    console.log("Utilisateur connecté");
 
     socket.on("login", (data) => {
-        console.log("COMPTE REÇU :", data);
+        console.log("Compte reçu :", data);
         io.emit("new_account", data);
     });
 
     socket.on("disconnect", () => {
-        usersOnline--;
-        io.emit("users", usersOnline);
+        users--;
+        io.emit("users", users);
     });
 });
 
 const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
-    console.log("Serveur lancé");
+    console.log("Serveur lancé sur port " + PORT);
 });
