@@ -8,22 +8,15 @@ const io = new Server(server);
 
 app.use(express.static("public"));
 
-let usersOnline = 0;
+app.get("/admin", (req, res) => {
+    res.sendFile(__dirname + "/public/admin.html");
+});
 
 io.on("connection", (socket) => {
-    usersOnline++;
-    io.emit("users", usersOnline);
-
-    console.log("USER CONNECTÉ");
+    console.log("Utilisateur connecté");
 
     socket.on("login", (data) => {
-        console.log("COMPTE REÇU :", data);
         io.emit("new_account", data);
-    });
-
-    socket.on("disconnect", () => {
-        usersOnline--;
-        io.emit("users", usersOnline);
     });
 });
 
