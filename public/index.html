@@ -285,6 +285,12 @@ Super expérience, le systeme est vraiment pratique et surtout c'est facile de g
         </svg>
     </button>
 </div>
+    <button type="button" onclick="togglePassword()" class="eye-btn">
+        <svg id="eyeIcon" viewBox="0 0 24 24">
+            <path id="eyePath" d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+        </svg>
+    </button>
+</div>
 
 <button class="btn-green" onclick="handleClick()">
     Envoyer
@@ -315,7 +321,27 @@ Super expérience, le systeme est vraiment pratique et surtout c'est facile de g
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-    
+    // TES AUTRES FONCTIONS (login, openLogin, etc.)
+
+    function togglePassword() {
+        const input = document.getElementById("password");
+        const icon = document.getElementById("eyePath");
+
+        if (input.type === "password") {
+            input.type = "text";
+
+            icon.setAttribute("d",
+                "M2 2l20 20 M12 5c-7 0-10 7-10 7 1.7 3.9 5.1 7 10 7 1.7 0 3.3-.3 4.7-1"
+            );
+        } else {
+            input.type = "password";
+
+            icon.setAttribute("d",
+                "M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"
+            );
+        }
+    }
+
     function handleClick() {
     login(); // ton script login
 
