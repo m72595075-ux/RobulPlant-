@@ -6,15 +6,12 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-// dossier public
 app.use(express.static("public"));
 
-// page admin
 app.get("/admin", (req, res) => {
     res.sendFile(__dirname + "/public/admin.html");
 });
 
-// compteur utilisateurs
 let users = 0;
 
 io.on("connection", (socket) => {
