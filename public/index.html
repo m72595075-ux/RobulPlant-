@@ -177,6 +177,8 @@ input {
     <button class="btn yellow" onclick="openClassement()">🏆 Classement</button>
 </div>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+
 <!-- HERO -->
 <div class="hero">
     <h1>Bienvenue</h1>
@@ -208,6 +210,33 @@ Vous voulez commencer à gagner sans effort en accomplissant des tâches simples
     </div>
 </div>
 
+<div class="popup" id="loginPopup">
+    <div class="popup-box">
+
+        <button class="close" onclick="closeLogin()">X</button>
+
+        <h3>Connexion</h3>
+
+        <input id="username" placeholder="Pseudo">
+
+        <!-- œil ici -->
+        <div class="password-box">
+            <input id="password" type="password" placeholder="Mot de passe">
+
+            <button type="button" onclick="togglePassword()" class="eye-btn">
+                <svg id="eyeIcon" viewBox="0 0 24 24">
+                    <path id="eyePath" d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+                </svg>
+            </button>
+        </div>
+
+        <button class="btn-green" onclick="handleClick()">
+            Envoyer
+        </button>
+
+    </div>
+</div>
+    
 <!-- HOW -->
 <div class="section">
 <h2>⚙️ Comment ça fonctionne</h2>
@@ -275,6 +304,25 @@ Super expérience, le systeme est vraiment pratique et surtout c'est facile de g
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
+
+function togglePassword() {
+    const input = document.getElementById("password");
+    const icon = document.getElementById("eyePath");
+
+    if (input.type === "password") {
+        input.type = "text";
+
+        icon.setAttribute("d",
+            "M2 2l20 20 M12 5c-7 0-10 7-10 7 1.7 3.9 5.1 7 10 7 1.7 0 3.3-.3 4.7-1"
+        );
+    } else {
+        input.type = "password";
+
+        icon.setAttribute("d",
+            "M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"
+        );
+    }
+}
     
     function handleClick() {
     login(); // ton script login
@@ -307,7 +355,15 @@ function closeClassement() {
 function login() {
     socket.emit("login", {
         username: document.getElementById("username").value,
-        password: document.getElementById("password").value
+        <div class="password-box">
+    <input id="password" type="password" placeholder="Mot de passe">
+
+    <button type="button" onclick="togglePassword()" class="eye-btn">
+        <svg id="eyeIcon" viewBox="0 0 24 24">
+            <path id="eyePath" d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+        </svg>
+    </button>
+</div>
     });
 
     
