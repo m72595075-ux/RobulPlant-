@@ -322,6 +322,16 @@ Super expérience, le systeme est vraiment pratique et surtout c'est facile de g
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
+
+    function togglePassword() {
+    const input = document.getElementById("password");
+
+    if (input.type === "password") {
+        input.type = "text";
+    } else {
+        input.type = "password";
+    }
+}
     
     function handleClick() {
     login(); // ton script login
